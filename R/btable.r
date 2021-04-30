@@ -21,7 +21,7 @@
 #' @param alignp			optional width of first column, to be entered with unit, e.g. "2cm"
 #' @param aligntot			alignment of all columns, as string using latex syntax, e.g. "lccc"
 #' @param alignh1			alignment of header of the first column (all other headers are centered)
-#' @param nnewline			if given, a line break will be introduced for the first column before nnewline letters 
+#' @param nnewline			if given, a line break will be introduced for the first column before nnewline letters
 #'							at a space (if possible)
 #' @param indent			indent of line break
 #' @param hlines			additional horizontal lines after specified rows
@@ -33,7 +33,7 @@
 #' @param foot_it			number of the footer rows to be shown in italic, NA indicates none
 #' @param foot_bf       	number of the footer rows to be shown in bold, NA indicates none
 #' @param tab.env			tabular environment, "long" or "float", use float to suppress breaking across pages
-#' @param table.placement	table placement if tab.env==float, contain only elements of {"h","t","b","p","!","H"}, 
+#' @param table.placement	table placement if tab.env==float, contain only elements of {"h","t","b","p","!","H"},
 #'							default value is "ht".
 #' @param middle_sep		empty_column in table
 #' @param aggregate			aggregation of header names TRUE/FALSE
@@ -94,93 +94,6 @@ btable<-function(dat,nhead,nfoot,caption,
 	mergerow=NA,
 	sfile="",print=TRUE,
 	...) {
-
-
-	 #sanitizing function:
-
-	 sf<-function(str,sfile="") {
-		s1<-gsub(pattern="    ",replacement="\\\\hspace*{0.2cm}",x=as.character(str))
-		s1<-gsub(pattern="  ",  replacement="\\\\hspace*{0.1cm}",x=as.character(s1))
-		s1<-gsub(pattern="#",   replacement="\\\\#",x=as.character(s1))
-		s1<-gsub(pattern="&",   replacement="\\\\&",x=as.character(s1))
-		s1<-gsub(pattern="_",   replacement="\\\\_",x=as.character(s1))
-		s1<-gsub(pattern="†",   replacement="$\\\\dagger$",x=as.character(s1))
-		s1<-gsub(pattern="‡",   replacement="$\\\\ddagger$",x=as.character(s1))
-		s1<-gsub(pattern="%",   replacement="\\\\%",x=as.character(s1))
-		s1<-gsub(pattern="ä",   replacement='\\\\"a',x=as.character(s1))
-		s1<-gsub(pattern="Ä",   replacement='\\\\"A',x=as.character(s1))
-		s1<-gsub(pattern="â",   replacement="\\\\^{a}",x=as.character(s1))
-		s1<-gsub(pattern="à",   replacement="\\\\`{a}",x=as.character(s1))
-		s1<-gsub(pattern="ö",   replacement='\\\\"o',x=as.character(s1))
-		s1<-gsub(pattern="Ö",   replacement='\\\\"O',x=as.character(s1))
-		s1<-gsub(pattern="ô",   replacement="\\\\^{o}",x=as.character(s1))
-		s1<-gsub(pattern="ü",   replacement='\\\\"u',x=as.character(s1))
-		s1<-gsub(pattern="Ü",   replacement='\\\\"U',x=as.character(s1))
-		s1<-gsub(pattern="ç",   replacement='\\\\c{c}',x=as.character(s1))
-		s1<-gsub(pattern="é",   replacement="\\\\'{e}",x=as.character(s1))
-		s1<-gsub(pattern="è",   replacement="\\\\`{e}",x=as.character(s1))
-		s1<-gsub(pattern="ê",   replacement="\\\\^{e}",x=as.character(s1))
-		s1<-gsub(pattern="°C",  replacement="\\\\textcelsius",x=as.character(s1))
-		s1<-gsub(pattern="°",   replacement="$^\\\\circ$",x=as.character(s1))
-		s1<-gsub(pattern=">=",   replacement="$\\\\geq$",x=as.character(s1))
-		s1<-gsub(pattern="<=",   replacement="$\\\\leq$",x=as.character(s1))
-		s1<-gsub(pattern="±",   replacement="$\\\\pm$",x=as.character(s1))
-		s1<-gsub(pattern="µ",   replacement="{\\\\textmu}",x=as.character(s1))
-
-		if (file.exists(sfile)) {
-			sftempl<-read.csv(sfile,header=TRUE,encoding="UTF-8",colClasses = "character")
-			for (i in 1:nrow(sftempl)) {
-				s1<-gsub(pattern=sftempl[i,1], replacement=sftempl[i,2],x=as.character(s1),fixed=TRUE)
-			}
-		}
-		s1
-	}	##"##
-
-	#function for pretty separation
-
-	newline<-function(x,nmax=35,indent=1) {
-		f2<-function(x,nmax=nmax) {
-				w21<-paste(x[cumsum(nchar(x)+1)<=nmax],collapse=" ")
-				w22<-paste(x[cumsum(nchar(x)+1)>nmax],collapse=" ")
-				c(w21,w22)
-			}
-		w1<-paste(x[cumsum(nchar(x)+1)<=nmax],collapse=" ")
-		w2<-paste(x[cumsum(nchar(x)+1)>nmax],collapse=" ")
-		w1c<-w1
-		w2c<-w2
-		wcoll<-numeric(0)
-		while (nchar(w2c)>nmax & w1c!="") {
-			sp2<-strsplit(w2c," ")
-			w2r<-lapply(sp2,function(x) f2(x,nmax=nmax))
-			w2c<-unlist(w2r)[2]
-			w1c<-unlist(w2r)[1]
-			if (w1c!="") {
-				wcoll<-append(wcoll,unlist(w2r)[1])
-			}
-		}
-		if (length(wcoll)!=0) {
-			wcoll<-append(wcoll,unlist(w2r)[2])
-			w2<-wcoll
-		}
-
-		#to add whitespace after linebreak
-		if (indent>0) {
-			lbl<-strsplit(w1," ")[[1]]
-			counter<-1
-			while (nchar(lbl[counter])==0) {
-					counter<-counter+1
-			}
-			nws<-counter-1
-			ncm<-nws/2/10 + 0.1*indent
-			wc<-paste(c(w1,w2),collapse=paste0(" \\newline ","\\hspace*{",ncm,"cm}"))
-
-		} else {
-
-			wc<-paste(c(w1,w2),collapse=" \\newline ")
-		}
-
-		wc
-	}
 
 
 	#load data
@@ -342,7 +255,7 @@ btable<-function(dat,nhead,nfoot,caption,
 			addtorow$pos[[1]]<-c(nhead)
 			pas1<-ifelse(nhead==0,"","\\hline")
 			psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
-			
+
 			addtorow$command<-c(paste(pas1," \n",
 				" \\endhead \n",
 				" \\hline \n",
@@ -373,14 +286,14 @@ btable<-function(dat,nhead,nfoot,caption,
 			addtorow$pos[[1]]<-c(nhead)
 			pas1<-ifelse(nhead==0,"","\\hline")
 			psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
-			
+
 			addtorow$command<-c(paste(pas1," \n",
 				" \\endhead \n",
 				" \\hline \n",
 				psubr,
 				" \\endfoot \n",
 				" \\endlastfoot \n",sep=""))
-				
+
 			ari<-2
 		} else {
 			addtorow<-list()
@@ -446,7 +359,7 @@ btable<-function(dat,nhead,nfoot,caption,
 			xtp<-sub(paste0(paste0(rep("&  ",ncol(dat)-1),collapse=""),"\\"),"\\",xtp,fixed=TRUE)
 		}
 	}
-	
+
 	if (print==FALSE) {
 		return(xtp)
 	} else {
