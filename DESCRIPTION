@@ -1,0 +1,21 @@
+Package: btabler
+Title: Nice Formatting For LaTeX Tables
+Version: 0.0.1.9000
+Authors@R: 
+    c(
+    person(given = "Lukas", family = "Bütikofer", role = c("cre", "aut"),
+    email = "lukas.buetikofer@ctu.unibe.ch"),
+    person(given = "Alan G.", family = "Haynes", role = "ctb",
+    email = "alan.haynes@ctu.unibe.ch")
+    )
+Description: There are a number of packages for creating LaTeX tables from R, but they lack feature like merging cells. `btabler` provides a function to do just that.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends:
+    xtable

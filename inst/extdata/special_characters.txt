@@ -1,0 +1,20 @@
+char,word
+†,† dagger
+‡,‡ doubledagger
+ä,ä a-umlaut
+Ä,Ä a-umlaut
+â,â a-hat
+à,à a-grav
+ö,ö o-umlaut
+Ö,Ö O-umlaut
+ô,ô o-hat
+ü,ü u-umlaut
+Ü,Ü U-umlaut
+ç,ç c-cedille
+é,é e-acute
+è,è e-grav
+ê,ê e-hat
+±,± pm
+µ,µ mu
+°C,°C celcus
+°,° degree
