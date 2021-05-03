@@ -41,6 +41,7 @@
 #' @param mergerow			merge indicated row, show only first entry
 #' @param sfile				sanitizing file for latex, dataframe with two columns, pattern and replacement
 #' @param print				logical, indicates whether table should be printed, TRUE by default
+#' @param comment				logical, indicates whether xtable should print it's comment, FALSE by default
 #' @param ...				further arguments passed to print.xtable()
 #'
 #' @return	table in latex format
@@ -92,7 +93,7 @@ btable<-function(dat,nhead,nfoot,caption,
 	middle_sep=NA,
 	aggregate=TRUE,rephead=TRUE,
 	mergerow=NA,
-	sfile="",print=TRUE,
+	sfile="",print=TRUE, comment = FALSE,
 	...) {
 
 
@@ -328,7 +329,7 @@ btable<-function(dat,nhead,nfoot,caption,
 		 print.results=FALSE,floating=float,
 		 tabular.environment = tabenv,
 		 size=paste0("\\fontsize{",fonts1,"pt}{",fonts2,"pt}\\selectfont"),
-		 add.to.row = addtorow, ...)
+		 add.to.row = addtorow, comment = comment, ...)
 
 
 	#replace empty columns at the end of headers
