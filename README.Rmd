@@ -58,6 +58,7 @@ btable(df, nhead = 1, nfoot = 0, caption = "Table1")
 
 `btable` returns the latex code for the table you passed, which can be easily used 
 with sweave to create tables in reports.
+
 ```{r, echo=FALSE}
 knitr::include_graphics("man/figures/basic.png")
 ```
