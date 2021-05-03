@@ -41,6 +41,7 @@
 #' @param mergerow			merge indicated row, show only first entry
 #' @param sfile				sanitizing file for latex, dataframe with two columns, pattern and replacement
 #' @param print				logical, indicates whether table should be printed, TRUE by default
+#' @param comment				logical, indicates whether xtable should print it's comment, FALSE by default
 #' @param ...				further arguments passed to print.xtable()
 #'
 #' @return	table in latex format
@@ -79,21 +80,34 @@
 #' saved_table<-btable(df,nhead=1,nfoot=1,caption="Table1",print=FALSE)
 #' cat(saved_table)
 #'
-btable<-function(dat,nhead,nfoot,caption,
-	label=NULL,
-	alignp=NA,aligntot=NA,alignh1="l",
-	nnewline=0,indent=1,
-	hlines=NA,
-	fonts1=8,fonts2=12,
-	rulelength="15cm",
-	head_it=c(2),head_bf=NA,
-	foot_it=NULL,foot_bf=NA,
-	tab.env="long",table.placement="ht",
-	middle_sep=NA,
-	aggregate=TRUE,rephead=TRUE,
-	mergerow=NA,
-	sfile="",print=TRUE,
-	...) {
+btable<-function(dat,
+                 nhead,
+                 nfoot,
+                 caption,
+                 label=NULL,
+                 alignp=NA,
+                 aligntot=NA,
+                 alignh1="l",
+                 nnewline=0,
+                 indent=1,
+                 hlines=NA,
+                 fonts1=8,
+                 fonts2=12,
+                 rulelength="15cm",
+                 head_it=c(2),
+                 head_bf=NA,
+                 foot_it=NULL,
+                 foot_bf=NA,
+                 tab.env="long",
+                 table.placement="ht",
+                 middle_sep=NA,
+                 aggregate=TRUE,
+                 rephead=TRUE,
+                 mergerow=NA,
+                 sfile="",
+                 print=TRUE,
+                 comment = FALSE,
+                 ...) {
 
 
 	#load data
@@ -328,7 +342,7 @@ btable<-function(dat,nhead,nfoot,caption,
 		 print.results=FALSE,floating=float,
 		 tabular.environment = tabenv,
 		 size=paste0("\\fontsize{",fonts1,"pt}{",fonts2,"pt}\\selectfont"),
-		 add.to.row = addtorow, ...)
+		 add.to.row = addtorow, comment = comment, ...)
 
 
 	#replace empty columns at the end of headers

@@ -31,6 +31,7 @@ btable(
   mergerow = NA,
   sfile = "",
   print = TRUE,
+  comment = FALSE,
   ...
 )
 }
@@ -88,6 +89,8 @@ default value is "ht".}
 \item{sfile}{sanitizing file for latex, dataframe with two columns, pattern and replacement}
 
 \item{print}{logical, indicates whether table should be printed, TRUE by default}
+
+\item{comment}{logical, indicates whether xtable should print it's comment, FALSE by default}
 
 \item{...}{further arguments passed to print.xtable()}
 }
