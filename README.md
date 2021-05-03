@@ -6,6 +6,9 @@ btabler
 [![](https://img.shields.io/badge/dev%20version-0.0.1.9000-blue.svg)](https://github.com/CTU-Bern/btabler)
 [![R-CMD-fullcheck](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml/badge.svg)](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml)
 
+`btabler` is a package which adds wraps the `xtable` package, adding
+additional functionality such as merging header columns.
+
 Example usage
 -------------
 
@@ -32,146 +35,93 @@ Load it as usual:
 Create your tables via whatever means and pass them to the `btable`
 function:
 
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{lccc}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##  \multicolumn{1}{l}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Group 1} & \multicolumn{1}{c}{Group 2} \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \bottomrule
-    ## \end{longtable}
-    ## \endgroup
+    df <- data.frame(name = c("", "Row 1", "Row2"),
+                     out_t = c("Total", "t1", "t1"),
+                     out_1 = c("Group 1", "g11", "g12"), 
+                     out_2 = c("Group 2", "g21", "g22"))
+    btable(df, nhead = 1, nfoot = 0, caption = "Table1")
 
-`btable` returns the latex code for the table you passed.
+`btable` returns the latex code for the table you passed, which can be
+easily used with sweave to create tables in reports.
+![](man/figures/basic.png)
 
-Alignement can be changed via the `aligntot` argument:
+Alignment can be changed via the `aligntot` argument. For example, we
+could specify that all columns should be left aligned:
 
-    btable(df,nhead=1,nfoot=0,caption="Table1",aligntot="llll")
+    btable(df, nhead = 1, nfoot = 0, caption = "Table1", aligntot = "llll")
 
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{llll}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##  \multicolumn{1}{l}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Group 1} & \multicolumn{1}{c}{Group 2} \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \bottomrule
-    ## \end{longtable}
-    ## \endgroup
+![](man/figures/aligntot.png)
+
+Column widths can also be modified using the `aligntot` argument:
+
+    cwidths <- "p{3cm}p{1.5cm}p{1.5cm}p{1.5cm}"
+
+    btable(df, nhead = 1, nfoot = 0, 
+           caption = "Table1", 
+           aligntot = cwidths, rulelength = "6cm")
+
+![](man/figures/aligntot_width.png)
+
+If the table is does not respect the widths entered in `aligntot`, the
+`rulelength` argument can be used to fix the overall table width.
 
 Where there are multiple header lines, the `nhead` argument can be used
 and any neighboring cells in those first rows will be merged.
 
-    df<-data.frame(name=c("","","Row 1","Row2"),out_t=c("Total","mean (sd)","t1","t1"),
-        out_1=c("Group 1","mean (sd)","g11","g12"),out_2=c("Group 2","mean (sd)","g21","g22"))
-    btable(df,nhead=2,nfoot=0,caption="Table1")
-
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{lccc}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##  \multicolumn{1}{l}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Group 1} & \multicolumn{1}{c}{Group 2} \\ 
-    ##   \multicolumn{1}{l}{\textit{}} & \multicolumn{3}{c}{\textit{mean (sd)}}   \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \bottomrule
-    ## \end{longtable}
-    ## \endgroup
+    df <- data.frame(name = c("", "", "Row 1", "Row2"),
+                     out_t = c("Total", "mean (sd)", "t1", "t1"),
+                     out_1 = c("Group 1", "mean (sd)", "g11", "g12"),
+                     out_2 = c("Group 2", "mean (sd)", "g21", "g22"))
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1")
 
 `btable` italicizes the second row of the header by default. This can be
 changed via the `head_it` argument:
 
-    btable(df,nhead=2,nfoot=0,caption="Table1",head_it=NA)
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA)
 
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{lccc}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##  \multicolumn{1}{l}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Group 1} & \multicolumn{1}{c}{Group 2} \\ 
-    ##   \multicolumn{1}{l}{} & \multicolumn{3}{c}{mean (sd)}   \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \bottomrule
-    ## \end{longtable}
-    ## \endgroup
+![](man/figures/head_it.png)
 
 Likewise, aggregation of the header can also be turned of
 
-    btable(df,nhead=2,nfoot=0,caption="Table1",head_it=NA,aggregate=FALSE)
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, aggregate = FALSE)
 
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{lccc}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##   & Total & Group 1 & Group 2 \\ 
-    ##    & mean (sd) & mean (sd) & mean (sd) \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \bottomrule
-    ## \end{longtable}
-    ## \endgroup
+![](man/figures/aggregate.png)
 
 Footers can also be added
 
-    df<-data.frame(name=c("","Row 1","Row2","*Footer"),out_t=c("Total","t1","t1",""),
-        out_1=c("Group 1","g11","g12",""),out_2=c("Group 2","g21","g22",""))
-    btable(df,nhead=1,nfoot=1,caption="Table1")
+    df <- data.frame(name = c("", "Row 1", "Row2", "*Footer"),
+                     out_t = c("Total", "t1", "t1", ""),
+                     out_1 = c("Group 1", "g11", "g12", ""),
+                     out_2 = c("Group 2", "g21", "g22", ""))
+    btable(df, nhead=1, nfoot=1, caption="Table1")
 
-    ## % latex table generated in R 4.0.5 by xtable 1.8-4 package
-    ## % Mon May  3 07:18:41 2021
-    ## \begingroup\fontsize{8pt}{12pt}\selectfont
-    ## \begin{longtable}{lccc}
-    ## \caption{Table1} \\ 
-    ##   \toprule
-    ##  \multicolumn{1}{l}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Group 1} & \multicolumn{1}{c}{Group 2} \\ 
-    ##    \hline 
-    ##  \endhead 
-    ##  \hline 
-    ## \multicolumn{4}{L{15cm}}{\textit{continued on next page}} 
-    ##  \endfoot 
-    ##  \endlastfoot 
-    ## Row 1 & t1 & g11 & g21 \\ 
-    ##   Row2 & t1 & g12 & g22 \\ 
-    ##    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{L{15cm}}{\textit{*Footer}} \\\end{longtable}
-    ## \endgroup
+![](man/figures/footer.png)
+
+Requirements for the header
+---------------------------
+
+`btabler` tables are only interpretable by LaTeX when a few packages are
+loaded. It is recommended to place the following code in the header of
+your `.tex` file or `.Rmd`
+
+    # .tex
+    \usepackage{longtable}
+    \usepackage{booktabs}
+    \usepackage{float}
+    \usepackage{array}
+    \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+    \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+    \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+    # .Rmd
+    header-includes:
+      - \usepackage{longtable}
+      - \usepackage{booktabs}
+      - \usepackage{float}
+      - \usepackage{array}
+      - \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+      - \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+      - \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+Note that `btabler` does not produce HTML tables. If using `.Rmd`,
+`output` should be `pdf_document`
