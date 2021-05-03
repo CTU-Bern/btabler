@@ -43,6 +43,7 @@ function:
 
 `btable` returns the latex code for the table you passed, which can be
 easily used with sweave to create tables in reports.
+
 ![](man/figures/basic.png)
 
 Alignment can be changed via the `aligntot` argument. For example, we
