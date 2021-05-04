@@ -27,7 +27,7 @@
 #' @param hlines			additional horizontal lines after specified rows
 #' @param fonts1			font size of text, 8 by default
 #' @param fonts2			font size of row, 12 by default
-#' @param rulelength		width of footer
+#' @param rulelength		optional width of footer
 #' @param head_it			number of the header rows to be shown in italic, NA indicates none
 #' @param head_bf			number of the header rows to be shown in bold, NA indicates none
 #' @param foot_it			number of the footer rows to be shown in italic, NA indicates none
@@ -93,7 +93,7 @@ btable<-function(dat,
                  hlines=NA,
                  fonts1=8,
                  fonts2=12,
-                 rulelength="15cm",
+                 rulelength=NULL,
                  head_it=c(2),
                  head_bf=NA,
                  foot_it=NULL,
@@ -246,7 +246,7 @@ btable<-function(dat,
 	if (tab.env=="float") {
 		float<-TRUE
 		tabenv<-"tabular"
-		rephead<-NULL
+		rephead<-FALSE
 	}
 
 	if (nfoot==0) {
@@ -262,14 +262,19 @@ btable<-function(dat,
 		}
 
 		#addtorow for repeating headers
-		if (!is.null(rephead)) {
+		if (rephead) {
 			hlinea<-hlinea[hlinea!=nhead]
 			addtorow<-list()
 			addtorow$pos<-list()
 			addtorow$pos[[1]]<-c(nhead)
 			pas1<-ifelse(nhead==0,"","\\hline")
-			psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
-
+			
+			if (is.null(rulelength)) {
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{l}{\\textit{continued on next page}} \n")
+			} else {
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
+			}
+	
 			addtorow$command<-c(paste(pas1," \n",
 				" \\endhead \n",
 				" \\hline \n",
@@ -293,14 +298,19 @@ btable<-function(dat,
 		}
 
 		#addtorow for repeating headers
-		if (!is.null(rephead)) {
+		if (rephead) {
 			hlinea<-hlinea[hlinea!=nhead]
 			addtorow<-list()
 			addtorow$pos<-list()
 			addtorow$pos[[1]]<-c(nhead)
 			pas1<-ifelse(nhead==0,"","\\hline")
-			psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
-
+			
+			if (is.null(rulelength)) {
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{l}{\\textit{continued on next page}} \n")
+			} else {
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
+			}
+			
 			addtorow$command<-c(paste(pas1," \n",
 				" \\endhead \n",
 				" \\hline \n",
@@ -317,15 +327,23 @@ btable<-function(dat,
 
 		#add footers via addtorow
 		if (nfoot>0) {
-
-			psubs<-paste0("\\specialrule{1pt}{1pt}{1pt} \\multicolumn{",
-				ncol(dat),"}{L{",rulelength,"}}{",subs[1],"} \\\\")
+			if (is.null(rulelength)) {
+				psubs<-paste0("\\specialrule{1pt}{1pt}{1pt} \\multicolumn{",
+					ncol(dat),"}{l}{",subs[1],"} \\\\")	
+			} else {
+				psubs<-paste0("\\specialrule{1pt}{1pt}{1pt} \\multicolumn{",
+					ncol(dat),"}{L{",rulelength,"}}{",subs[1],"} \\\\")
+			}		
 			addtorow$pos[[ari]]<-nrow(xt)
 			addtorow$command[ari]<-psubs
 
 			if (nfoot>1) {
 				for (i in 2:nfoot) {
-					psub<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{",subs[i],"} \\\\")
+					if (is.null(rulelength)) {
+						psub<-paste0("\\multicolumn{",ncol(dat),"}{l}{",subs[i],"} \\\\")
+					} else {
+						psub<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{",subs[i],"} \\\\")
+					}	
 					psubs<-c(psubs,psub)
 					addtorow$pos[[i-1+ari]]<-nrow(xt)
 					addtorow$command[i-1+ari]<-psub

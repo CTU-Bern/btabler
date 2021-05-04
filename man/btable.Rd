@@ -18,7 +18,7 @@ btable(
   hlines = NA,
   fonts1 = 8,
   fonts2 = 12,
-  rulelength = "15cm",
+  rulelength = NULL,
   head_it = c(2),
   head_bf = NA,
   foot_it = NULL,
@@ -63,7 +63,7 @@ at a space (if possible)}
 
 \item{fonts2}{font size of row, 12 by default}
 
-\item{rulelength}{width of footer}
+\item{rulelength}{optional width of footer}
 
 \item{head_it}{number of the header rows to be shown in italic, NA indicates none}
 
