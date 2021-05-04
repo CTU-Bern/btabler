@@ -73,18 +73,21 @@ and any neighboring cells in those first rows will be merged.
                      out_t = c("Total", "mean (sd)", "t1", "t1"),
                      out_1 = c("Group 1", "mean (sd)", "g11", "g12"),
                      out_2 = c("Group 2", "mean (sd)", "g21", "g22"))
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1")
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1", 
+           rulelength = "6cm")
 
 `btable` italicizes the second row of the header by default. This can be
 changed via the `head_it` argument:
 
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA)
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, 
+           rulelength = "6cm")
 
 ![](man/figures/head_it.png)
 
 Likewise, aggregation of the header can also be turned of
 
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, aggregate = FALSE)
+    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, aggregate = FALSE, 
+           rulelength = "6cm")
 
 ![](man/figures/aggregate.png)
 
@@ -94,7 +97,8 @@ Footers can also be added
                      out_t = c("Total", "t1", "t1", ""),
                      out_1 = c("Group 1", "g11", "g12", ""),
                      out_2 = c("Group 2", "g21", "g22", ""))
-    btable(df, nhead=1, nfoot=1, caption="Table1")
+    btable(df, nhead=1, nfoot=1, caption="Table1", 
+           rulelength = "6cm")
 
 ![](man/figures/footer.png)
 
