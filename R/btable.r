@@ -272,7 +272,7 @@ btable<-function(dat,
 			if (is.null(rulelength)) {
 				psubr<-paste0("\\multicolumn{",ncol(dat),"}{l}{\\textit{continued on next page}} \n")
 			} else {
-				psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{p{",rulelength,"}}{\\textit{continued on next page}} \n")
 			}
 	
 			addtorow$command<-c(paste(pas1," \n",
@@ -308,7 +308,7 @@ btable<-function(dat,
 			if (is.null(rulelength)) {
 				psubr<-paste0("\\multicolumn{",ncol(dat),"}{l}{\\textit{continued on next page}} \n")
 			} else {
-				psubr<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{\\textit{continued on next page}} \n")
+				psubr<-paste0("\\multicolumn{",ncol(dat),"}{p{",rulelength,"}}{\\textit{continued on next page}} \n")
 			}
 			
 			addtorow$command<-c(paste(pas1," \n",
@@ -332,7 +332,7 @@ btable<-function(dat,
 					ncol(dat),"}{l}{",subs[1],"} \\\\")	
 			} else {
 				psubs<-paste0("\\specialrule{1pt}{1pt}{1pt} \\multicolumn{",
-					ncol(dat),"}{L{",rulelength,"}}{",subs[1],"} \\\\")
+					ncol(dat),"}{p{",rulelength,"}}{",subs[1],"} \\\\")
 			}		
 			addtorow$pos[[ari]]<-nrow(xt)
 			addtorow$command[ari]<-psubs
@@ -342,7 +342,7 @@ btable<-function(dat,
 					if (is.null(rulelength)) {
 						psub<-paste0("\\multicolumn{",ncol(dat),"}{l}{",subs[i],"} \\\\")
 					} else {
-						psub<-paste0("\\multicolumn{",ncol(dat),"}{L{",rulelength,"}}{",subs[i],"} \\\\")
+						psub<-paste0("\\multicolumn{",ncol(dat),"}{p{",rulelength,"}}{",subs[i],"} \\\\")
 					}	
 					psubs<-c(psubs,psub)
 					addtorow$pos[[i-1+ari]]<-nrow(xt)
