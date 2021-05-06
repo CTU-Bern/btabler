@@ -3,11 +3,14 @@
 btabler
 =======
 
-[![](https://img.shields.io/badge/dev%20version-0.0.1.9002-blue.svg)](https://github.com/CTU-Bern/btabler)
+[![](https://img.shields.io/badge/dev%20version-0.0.1.9003-blue.svg)](https://github.com/CTU-Bern/btabler)
 [![R-CMD-fullcheck](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml/badge.svg)](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml)
 
 `btabler` is a package which adds wraps the `xtable` package, adding
 additional functionality such as merging header columns.
+
+Note that `btabler` does not produce HTML tables. If using `.Rmd`,
+`output` should be `pdf_document`.
 
 Example usage
 -------------
@@ -46,61 +49,18 @@ easily used with sweave to create tables in reports.
 
 ![](man/figures/basic.png)
 
-Alignment can be changed via the `aligntot` argument. For example, we
-could specify that all columns should be left aligned:
-
-    btable(df, nhead = 1, nfoot = 0, caption = "Table1", aligntot = "llll")
-
-![](man/figures/aligntot.png)
-
-Column widths can also be modified using the `aligntot` argument:
-
-    cwidths <- "p{3cm}p{1.5cm}p{1.5cm}p{1.5cm}"
+As an example for further modifications, column widths can also be
+modified using the `aligntot` argument:
 
     btable(df, nhead = 1, nfoot = 0, 
            caption = "Table1", 
-           aligntot = cwidths, rulelength = "6cm")
+           aligntot = "p{3cm}p{1.5cm}p{1.5cm}p{1.5cm}")
 
 ![](man/figures/aligntot_width.png)
 
-If the table is does not respect the widths entered in `aligntot`, the
-`rulelength` argument can be used to fix the overall table width.
+See the vignette for further examples of using `btabler`
 
-Where there are multiple header lines, the `nhead` argument can be used
-and any neighboring cells in those first rows will be merged.
-
-    df <- data.frame(name = c("", "", "Row 1", "Row2"),
-                     out_t = c("Total", "mean (sd)", "t1", "t1"),
-                     out_1 = c("Group 1", "mean (sd)", "g11", "g12"),
-                     out_2 = c("Group 2", "mean (sd)", "g21", "g22"))
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1", 
-           rulelength = "6cm")
-
-`btable` italicizes the second row of the header by default. This can be
-changed via the `head_it` argument:
-
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, 
-           rulelength = "6cm")
-
-![](man/figures/head_it.png)
-
-Likewise, aggregation of the header can also be turned of
-
-    btable(df, nhead = 2, nfoot = 0, caption = "Table1", head_it = NA, aggregate = FALSE, 
-           rulelength = "6cm")
-
-![](man/figures/aggregate.png)
-
-Footers can also be added
-
-    df <- data.frame(name = c("", "Row 1", "Row2", "*Footer"),
-                     out_t = c("Total", "t1", "t1", ""),
-                     out_1 = c("Group 1", "g11", "g12", ""),
-                     out_2 = c("Group 2", "g21", "g22", ""))
-    btable(df, nhead=1, nfoot=1, caption="Table1", 
-           rulelength = "6cm")
-
-![](man/figures/footer.png)
+    vignette("btabler")
 
 Requirements for the header
 ---------------------------
@@ -114,9 +74,6 @@ your `.tex` file or `.Rmd`
     \usepackage{booktabs}
     \usepackage{float}
     \usepackage{array}
-    \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
-    \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-    \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
     # .Rmd
     header-includes:
@@ -124,9 +81,8 @@ your `.tex` file or `.Rmd`
       - \usepackage{booktabs}
       - \usepackage{float}
       - \usepackage{array}
-      - \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
-      - \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-      - \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
-Note that `btabler` does not produce HTML tables. If using `.Rmd`,
-`output` should be `pdf_document`
+Other things like custom column types can also be added to the header
+(see the vignette for an example)
+
+    vignette("btabler")
