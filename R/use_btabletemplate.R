@@ -14,12 +14,12 @@
 #' # Rnw file
 #' use_btabletemplate("foo", fmt = "Rnw")
 use_btabletemplate <- function(name
-                               , fmt = "Rmd"
+                               , fmt = c("Rmd", "Rnw")
                                , ...
                                , open = TRUE
                                ) {
 
-  fmt <- match.arg(fmt, c("Rmd", "Rnw"))
+  fmt <- match.arg(fmt)
 
   # add file extension
   if(!grepl(paste0(fmt, "$"), name)) name <- paste(name, fmt, sep = ".")
