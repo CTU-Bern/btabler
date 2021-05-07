@@ -3,7 +3,7 @@
 btabler
 =======
 
-[![](https://img.shields.io/badge/dev%20version-0.0.1.9003-blue.svg)](https://github.com/CTU-Bern/btabler)
+[![](https://img.shields.io/badge/dev%20version-0.0.1.9004-blue.svg)](https://github.com/CTU-Bern/btabler)
 [![R-CMD-fullcheck](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml/badge.svg)](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml)
 
 `btabler` is a package which adds wraps the `xtable` package, adding
@@ -86,3 +86,7 @@ Other things like custom column types can also be added to the header
 (see the vignette for an example)
 
     vignette("btabler")
+
+`btabler` provides basic templates in `Rmd` and `Rnw` formats:
+
+    use_btabletemplate("filename", "Rmd")
