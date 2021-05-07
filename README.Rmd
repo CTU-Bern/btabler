@@ -112,4 +112,10 @@ vignette for an example)
 vignette("btabler")
 ```
 
+`btabler` provides basic templates in `Rmd` and `Rnw` formats:
+
+```{r, eval = FALSE}
+use_btabletemplate("filename", "Rmd")
+```
+
 
