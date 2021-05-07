@@ -21,6 +21,10 @@ use_btabletemplate <- function(name
 
   fmt <- match.arg(fmt, c("Rmd", "Rnw"))
 
+  # add file extension
+  if(!grepl(paste0(fmt, "$"), name)) name <- paste(name, fmt, sep = ".")
+
+
   usethis::use_template(template = paste0("template.", fmt)
                         , save_as = name
                         , package = "btabler"
