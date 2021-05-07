@@ -22,8 +22,10 @@ use_btabletemplate(name, fmt = c("Rmd", "Rnw"), ..., open = TRUE)
 Open a basic template suitable for use with btable
 }
 \examples{
+\dontrun{
 # Rmd file
 use_btabletemplate("foo")
 # Rnw file
 use_btabletemplate("foo", fmt = "Rnw")
+}
 }

@@ -9,10 +9,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Rmd file
 #' use_btabletemplate("foo")
 #' # Rnw file
 #' use_btabletemplate("foo", fmt = "Rnw")
+#' }
+#' @importFrom usethis use_template
 use_btabletemplate <- function(name
                                , fmt = c("Rmd", "Rnw")
                                , ...
@@ -25,11 +28,11 @@ use_btabletemplate <- function(name
   if(!grepl(paste0(fmt, "$"), name)) name <- paste(name, fmt, sep = ".")
 
 
-  usethis::use_template(template = paste0("template.", fmt)
-                        , save_as = name
-                        , package = "btabler"
-                        , open = open
-                        , ...
-                        )
+  use_template(template = paste0("template.", fmt)
+               , save_as = name
+               , package = "btabler"
+               , open = open
+               , ...
+               )
 
 }
