@@ -41,6 +41,34 @@ In the compiled PDF, this looks substantially better of course...
 knitr::include_graphics("fig/basic.png")
 ```
 
+## Templates
+
+`btabler` requires that a few specific LaTeX packages are included in the header of your `Rmd` or `Rnw`/`tex' file:
+
+```
+# .tex
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+
+# .Rmd
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{booktabs}
+  - \usepackage{float}
+  - \usepackage{array}
+```
+
+For convenience, `btabler` provides templates for each which can be accessed via `use_btabletemplate`:
+
+```{r, eval = FALSE}
+use_btabletemplate("report")             # creates report.Rmd in the working directory
+use_btabletemplate("report", "Rnw")      # creates report.Rnw in the working directory
+use_btabletemplate("code/report", "Rnw") # creates report.Rmd in the code directory
+```
+
+
 ## Headers and footers
 
 Where there are multiple header lines, the `nhead` argument can be used and any neighboring cells in those first rows will be merged. 
