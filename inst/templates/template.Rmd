@@ -1,0 +1,36 @@
+---
+title: "Title"
+author: "Author"
+date: "`r Sys.Date()`"
+output: pdf_document
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{booktabs}
+  - \usepackage{float}
+  - \usepackage{array}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(btabler)
+
+```
+
+
+
+## Example
+
+```{r, results='asis'}
+df <- data.frame(name = c("", "Row 1", "Row2"),
+                 out_t = c("Total", "t1", "t1"),
+                 out_1 = c("Group 1", "g11", "g12"), 
+                 out_2 = c("Group 2", "g21", "g22"))
+btable(df, nhead = 1, nfoot = 0, caption = "Table captions", label = "tab:x")
+```
+
+Table \ref{tab:x} shows an example of using btable.
+
+
+
