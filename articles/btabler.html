@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">btabler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9004</span>
       </span>
     </div>
 
@@ -104,11 +104,33 @@
 <span class="co">#&gt; \endgroup</span></code></pre></div>
 <p>In the compiled PDF, this looks substantially better of course…</p>
 <p><img src="fig/basic.png"><!-- --></p>
+<div id="templates" class="section level2">
+<h2 class="hasAnchor">
+<a href="#templates" class="anchor"></a>Templates</h2>
+<p><code>btabler</code> requires that a few specific LaTeX packages are included in the header of your <code>Rmd</code> or <code>Rnw</code>/`tex’ file:</p>
+<pre><code># .tex
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{array}
+
+# .Rmd
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{booktabs}
+  - \usepackage{float}
+  - \usepackage{array}</code></pre>
+<p>For convenience, <code>btabler</code> provides templates for each which can be accessed via <code>use_btabletemplate</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/use_btabletemplate.html">use_btabletemplate</a></span><span class="op">(</span><span class="st">"report"</span><span class="op">)</span>             <span class="co"># creates report.Rmd in the working directory</span>
+<span class="fu"><a href="../reference/use_btabletemplate.html">use_btabletemplate</a></span><span class="op">(</span><span class="st">"report"</span>, <span class="st">"Rnw"</span><span class="op">)</span>      <span class="co"># creates report.Rnw in the working directory</span>
+<span class="fu"><a href="../reference/use_btabletemplate.html">use_btabletemplate</a></span><span class="op">(</span><span class="st">"code/report"</span>, <span class="st">"Rnw"</span><span class="op">)</span> <span class="co"># creates report.Rmd in the code directory</span></code></pre></div>
+</div>
 <div id="headers-and-footers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#headers-and-footers" class="anchor"></a>Headers and footers</h2>
 <p>Where there are multiple header lines, the <code>nhead</code> argument can be used and any neighboring cells in those first rows will be merged.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span><span class="op">)</span>,
                  out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span><span class="op">)</span>,
                  out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span><span class="op">)</span>,
@@ -117,19 +139,19 @@
 
 <p><img src="fig/header.png"><!-- --></p>
 <p><code>btable</code> italicizes the second row of the header by default. This can be changed via the <code>head_it</code> argument:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">2</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span>, 
        head_it <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
 
 <p><img src="fig/head_it.png"><!-- --></p>
 <p>Likewise, aggregation of the header can also be turned of</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">2</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span>, 
        head_it <span class="op">=</span> <span class="cn">NA</span>, aggregate <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 
 <p><img src="fig/aggregate.png"><!-- --></p>
 <p>Footers included in the dataframe can also be added:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span>, <span class="st">"*Footer"</span><span class="op">)</span>,
                  out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span>, <span class="st">""</span><span class="op">)</span>,
                  out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span>, <span class="st">""</span><span class="op">)</span>,
@@ -142,7 +164,7 @@
 <h2 class="hasAnchor">
 <a href="#alignment" class="anchor"></a>Alignment</h2>
 <p>Alignment can be changed via the <code>aligntot</code> argument. For example, we could specify that the first column be left aligned and all other columns should be centered aligned:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">1</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span>, aligntot <span class="op">=</span> <span class="st">"lccc"</span><span class="op">)</span></code></pre></div>
 <p><img src="fig/align.png"><!-- --></p>
 <div id="custom-column-types" class="section level3">
@@ -158,7 +180,7 @@ header-includes:
   ... # other requirements
   - \newcolumntype{P}[1]{&gt;{\centering\arraybackslash}p{#1}}</code></pre>
 <p>This can then be used in btable in the <code>aligntot</code> argument (note that <code>xtable</code> warns about non-standard, adding <code>warning = FALSE</code> to the chunk header might be useful…)</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">1</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, 
        caption <span class="op">=</span> <span class="st">"Table1"</span>, 
        aligntot <span class="op">=</span> <span class="st">"P{3cm}P{1.5cm}P{1.5cm}P{1.5cm}"</span><span class="op">)</span></code></pre></div>
