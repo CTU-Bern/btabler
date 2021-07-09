@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.path = "man/figures/README-")
 ```
 
-# btabler
+# btabler <img src='man/figures/sticker.png' align="right" height="200">
 
 
 `r badger::badge_custom("dev version", as.character(packageVersion("btabler")), 
