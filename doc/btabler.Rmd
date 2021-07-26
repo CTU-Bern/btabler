@@ -65,7 +65,7 @@ For convenience, `btabler` provides templates for each which can be accessed via
 ```{r, eval = FALSE}
 use_btabletemplate("report")             # creates report.Rmd in the working directory
 use_btabletemplate("report", "Rnw")      # creates report.Rnw in the working directory
-use_btabletemplate("code/report", "Rnw") # creates report.Rmd in the code directory
+use_btabletemplate("code/report", "Rnw") # creates report.Rnw in the code directory
 ```
 
 

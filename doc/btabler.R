@@ -22,7 +22,7 @@ knitr::include_graphics("fig/basic.png")
 ## ---- eval = FALSE------------------------------------------------------------
 #  use_btabletemplate("report")             # creates report.Rmd in the working directory
 #  use_btabletemplate("report", "Rnw")      # creates report.Rnw in the working directory
-#  use_btabletemplate("code/report", "Rnw") # creates report.Rmd in the code directory
+#  use_btabletemplate("code/report", "Rnw") # creates report.Rnw in the code directory
 
 ## ----nhead, echo = TRUE, results='asis'---------------------------------------
 df <- data.frame(name = c("", "", "Row 1", "Row2"),
