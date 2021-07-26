@@ -1,7 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-btabler
-=======
+btabler <img src='man/figures/sticker.png' align="right" height="200">
+======================================================================
 
 [![](https://img.shields.io/badge/dev%20version-0.0.1.9004-blue.svg)](https://github.com/CTU-Bern/btabler)
 [![R-CMD-fullcheck](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml/badge.svg)](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml)
