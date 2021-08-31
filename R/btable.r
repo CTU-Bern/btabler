@@ -109,12 +109,22 @@ btable<-function(dat,
                  comment = FALSE,
                  ...) {
 
-
+	
+	#checks and warnings:
+	
+	if (!is.na(aligntot)) { 
+		if (aggregate) {
+			warning(paste0("The header rows to not respect aligntot if aggregate==TRUE (the default)---",
+				"use aggregate=FALSE to use aligntot for the headers."))
+		}
+	}
+	
 	#load data
 
 	dat<-apply(dat,2,as.character)
 
 	#prepare footers:
+	
 	if (nfoot>0) {
 		subs<-numeric(0)
 
@@ -149,6 +159,11 @@ btable<-function(dat,
 	if (nnewline>0) {
 		lw<-dat[,1][nchar(dat[,1])>nnewline]
 		sp<-strsplit(lw," ")
+		if (any(nchar(unlist(sp))>nnewline)) {
+			wlong<-paste(unlist(sp)[nchar(unlist(sp))>nnewline],collapse=", ")
+			warning(paste0("Words ",wlong," in first column are longer than ",nnewline," characters ",
+				"and cannot be split."))
+		}
 		tor<-lapply(sp,function(x) newline(x,nmax=nnewline,indent=indent))
 		dat[,1][nchar(dat[,1])>nnewline]<-unlist(tor)
 		dat<-data.frame(dat)
@@ -168,17 +183,21 @@ btable<-function(dat,
 			ms<-match(head1,uh)
 			msum<-numeric(0)
 			m<-1
-			for (i in 2:length(head1)) {
-				if (!is.na(head1[i]) & !is.na(head1[i-1]) & head1[i]==head1[i-1]) {
-					m<-m+1
-				} else {
-				msum<-append(msum,m)
-				m<-1
-				}
-				if (i==length(head1)) {
+			if (length(head1)>1) {
+				for (i in 2:length(head1)) {
+					if (!is.na(head1[i]) & !is.na(head1[i-1]) & head1[i]==head1[i-1]) {
+						m<-m+1
+					} else {
 					msum<-append(msum,m)
+					m<-1
+					}
+					if (i==length(head1)) {
+						msum<-append(msum,m)
+					}
 				}
-			}
+			} else {
+				msum<-1
+			}			
 			hft<-numeric(0)
 			for (i in 1:length(msum)) {
 				msi<-msum[i]
