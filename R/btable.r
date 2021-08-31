@@ -159,6 +159,11 @@ btable<-function(dat,
 	if (nnewline>0) {
 		lw<-dat[,1][nchar(dat[,1])>nnewline]
 		sp<-strsplit(lw," ")
+		if (any(nchar(unlist(sp))>nnewline)) {
+			wlong<-paste(unlist(sp)[nchar(unlist(sp))>nnewline],collapse=", ")
+			warning(paste0("Words ",wlong," in first column are longer than ",nnewline," characters ",
+				"and cannot be split."))
+		}
 		tor<-lapply(sp,function(x) newline(x,nmax=nnewline,indent=indent))
 		dat[,1][nchar(dat[,1])>nnewline]<-unlist(tor)
 		dat<-data.frame(dat)
