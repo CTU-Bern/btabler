@@ -168,17 +168,21 @@ btable<-function(dat,
 			ms<-match(head1,uh)
 			msum<-numeric(0)
 			m<-1
-			for (i in 2:length(head1)) {
-				if (!is.na(head1[i]) & !is.na(head1[i-1]) & head1[i]==head1[i-1]) {
-					m<-m+1
-				} else {
-				msum<-append(msum,m)
-				m<-1
-				}
-				if (i==length(head1)) {
+			if (length(head1)>1) {
+				for (i in 2:length(head1)) {
+					if (!is.na(head1[i]) & !is.na(head1[i-1]) & head1[i]==head1[i-1]) {
+						m<-m+1
+					} else {
 					msum<-append(msum,m)
+					m<-1
+					}
+					if (i==length(head1)) {
+						msum<-append(msum,m)
+					}
 				}
-			}
+			} else {
+				msum<-1
+			}			
 			hft<-numeric(0)
 			for (i in 1:length(msum)) {
 				msi<-msum[i]
