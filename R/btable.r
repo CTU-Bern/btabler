@@ -109,12 +109,22 @@ btable<-function(dat,
                  comment = FALSE,
                  ...) {
 
-
+	
+	#checks and warnings:
+	
+	if (!is.na(aligntot)) { 
+		if (aggregate) {
+			warning(paste0("The header rows to not respect aligntot if aggregate==TRUE (the default)---",
+				"use aggregate=FALSE to use aligntot for the headers."))
+		}
+	}
+	
 	#load data
 
 	dat<-apply(dat,2,as.character)
 
 	#prepare footers:
+	
 	if (nfoot>0) {
 		subs<-numeric(0)
 
