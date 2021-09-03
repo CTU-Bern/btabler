@@ -19,7 +19,7 @@ Note that `btabler` does not produce HTML tables. If using `.Rmd`,
 The package can be installed from the CTU Bern universe via
 
 ``` r
-install.packages('accrualPlot', repos = 'https://ctu-bern.r-universe.dev')
+install.packages('btabler', repos = 'https://ctu-bern.r-universe.dev')
 ```
 
 ### Using the package
