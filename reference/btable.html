@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">btabler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -274,159 +274,151 @@ default value is "ht".</p></td>
 lines (nhead, nfoot) and a caption for the table.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,</span>
-<span class='r-in'>    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \bottomrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,aligntot<span class='op'>=</span><span class='st'>"llll"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{llll}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \bottomrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>#two header lines</span></span>
-<span class='r-in'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,</span>
-<span class='r-in'>    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \multicolumn{1}{l}{\textit{}} &amp; \multicolumn{3}{c}{\textit{mean (sd)}}   \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \bottomrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,head_it<span class='op'>=</span><span class='cn'>NA</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \multicolumn{1}{l}{} &amp; \multicolumn{3}{c}{mean (sd)}   \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \bottomrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,head_it<span class='op'>=</span><span class='cn'>NA</span>,aggregate<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   &amp; Total &amp; Group 1 &amp; Group 2 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    &amp; mean (sd) &amp; mean (sd) &amp; mean (sd) \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \bottomrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>#footer</span></span>
-<span class='r-in'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span>,<span class='st'>"*Footer"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span>,<span class='st'>""</span><span class='op'>)</span>,</span>
-<span class='r-in'>    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span>,<span class='st'>""</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   Row2 &amp; t1 &amp; g12 &amp; g22 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{*Footer}} \\\end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>#floating table, no page break within table</span></span>
-<span class='r-in'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,</span>
-<span class='r-in'>    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,tab.env<span class='op'>=</span><span class='st'>"float"</span>,table.placement<span class='op'>=</span><span class='st'>"H"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{table}[H]</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \centering</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{tabular}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \midrule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{Row2}} \\\end{tabular}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \end{table}</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>#save table and print later</span></span>
-<span class='r-in'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,</span>
-<span class='r-in'>    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>saved_table</span><span class='op'>&lt;-</span><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,print<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='va'>saved_table</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begingroup\fontsize{8pt}{12pt}\selectfont</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \begin{longtable}{lccc}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \caption{Table1} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   \toprule</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endhead </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \hline </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \multicolumn{4}{l}{\textit{continued on next page}} </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  \endlastfoot </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Row 1 &amp; t1 &amp; g11 &amp; g21 \\ </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{Row2}} \\\end{longtable}</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> \endgroup</span>
-<span class='r-in'></span>
-</pre>
+    <pre class="examples"><div class='input'><span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,
+    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \bottomrule
+#&gt; \end{longtable}
+#&gt; \endgroup</div><div class='input'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,aligntot<span class='op'>=</span><span class='st'>"llll"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The header rows to not respect aligntot if aggregate==TRUE (the default)---use aggregate=FALSE to use aligntot for the headers.</span></div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{llll}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \bottomrule
+#&gt; \end{longtable}
+#&gt; \endgroup</div><div class='input'>
+<span class='co'>#two header lines</span>
+<span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,
+    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"mean (sd)"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;   \multicolumn{1}{l}{\textit{}} &amp; \multicolumn{3}{c}{\textit{mean (sd)}}   \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \bottomrule
+#&gt; \end{longtable}
+#&gt; \endgroup</div><div class='input'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,head_it<span class='op'>=</span><span class='cn'>NA</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;   \multicolumn{1}{l}{} &amp; \multicolumn{3}{c}{mean (sd)}   \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \bottomrule
+#&gt; \end{longtable}
+#&gt; \endgroup</div><div class='input'><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>2</span>,nfoot<span class='op'>=</span><span class='fl'>0</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,head_it<span class='op'>=</span><span class='cn'>NA</span>,aggregate<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;   &amp; Total &amp; Group 1 &amp; Group 2 \\ 
+#&gt;    &amp; mean (sd) &amp; mean (sd) &amp; mean (sd) \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \bottomrule
+#&gt; \end{longtable}
+#&gt; \endgroup</div><div class='input'>
+<span class='co'>#footer</span>
+<span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span>,<span class='st'>"*Footer"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span>,<span class='st'>""</span><span class='op'>)</span>,
+    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span>,<span class='st'>""</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;   Row2 &amp; t1 &amp; g12 &amp; g22 \\ 
+#&gt;    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{*Footer}} \\\end{longtable}
+#&gt; \endgroup</div><div class='input'>
+<span class='co'>#floating table, no page break within table</span>
+<span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,
+    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,tab.env<span class='op'>=</span><span class='st'>"float"</span>,table.placement<span class='op'>=</span><span class='st'>"H"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begin{table}[H]
+#&gt; \centering
+#&gt; \caption{Table1} 
+#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{tabular}{lccc}
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;    \midrule
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{Row2}} \\\end{tabular}
+#&gt; \endgroup
+#&gt; \end{table}</div><div class='input'>
+<span class='co'>#save table and print later</span>
+<span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>,<span class='st'>"Row 1"</span>,<span class='st'>"Row2"</span><span class='op'>)</span>,out_t<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Total"</span>,<span class='st'>"t1"</span>,<span class='st'>"t1"</span><span class='op'>)</span>,
+    out_1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 1"</span>,<span class='st'>"g11"</span>,<span class='st'>"g12"</span><span class='op'>)</span>,out_2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Group 2"</span>,<span class='st'>"g21"</span>,<span class='st'>"g22"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>saved_table</span><span class='op'>&lt;-</span><span class='fu'>btable</span><span class='op'>(</span><span class='va'>df</span>,nhead<span class='op'>=</span><span class='fl'>1</span>,nfoot<span class='op'>=</span><span class='fl'>1</span>,caption<span class='op'>=</span><span class='st'>"Table1"</span>,print<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='va'>saved_table</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont
+#&gt; \begin{longtable}{lccc}
+#&gt; \caption{Table1} \\ 
+#&gt;   \toprule
+#&gt;  \multicolumn{1}{l}{} &amp; \multicolumn{1}{c}{Total} &amp; \multicolumn{1}{c}{Group 1} &amp; \multicolumn{1}{c}{Group 2} \\ 
+#&gt;    \hline 
+#&gt;  \endhead 
+#&gt;  \hline 
+#&gt; \multicolumn{4}{l}{\textit{continued on next page}} 
+#&gt;  \endfoot 
+#&gt;  \endlastfoot 
+#&gt; Row 1 &amp; t1 &amp; g11 &amp; g21 \\ 
+#&gt;    \specialrule{1pt}{1pt}{1pt} \multicolumn{4}{l}{\textit{Row2}} \\\end{longtable}
+#&gt; \endgroup</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
