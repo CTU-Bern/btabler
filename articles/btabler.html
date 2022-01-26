@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">btabler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/btabler.html">Get started</a>
 </li>
@@ -75,15 +71,15 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">btabler</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">btabler</span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: xtable</span></code></pre></div>
 <p><code>btabler</code> is a wrapper for the <code>xtable</code> package which adds some new functionality for merging headers, adding footers etc.</p>
 <p>To demonstrate how <code>btabler</code></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span><span class="op">)</span>,
-                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span><span class="op">)</span>,
-                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span><span class="op">)</span>, 
-                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span><span class="op">)</span>,
+                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span><span class="op">)</span>,
+                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span><span class="op">)</span>, 
+                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">1</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span><span class="op">)</span>
 <span class="co">#&gt; \begingroup\fontsize{8pt}{12pt}\selectfont</span>
@@ -104,9 +100,9 @@
 <span class="co">#&gt; \endgroup</span></code></pre></div>
 <p>In the compiled PDF, this looks substantially better of course…</p>
 <p><img src="fig/basic.png"><!-- --></p>
-<div id="templates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#templates" class="anchor"></a>Templates</h2>
+<div class="section level2">
+<h2 id="templates">Templates<a class="anchor" aria-label="anchor" href="#templates"></a>
+</h2>
 <p><code>btabler</code> requires that a few specific LaTeX packages are included in the header of your <code>Rmd</code> or <code>Rnw</code>/`tex’ file:</p>
 <pre><code># .tex
 \usepackage{longtable}
@@ -126,15 +122,15 @@ header-includes:
 <span class="fu"><a href="../reference/use_btabletemplate.html">use_btabletemplate</a></span><span class="op">(</span><span class="st">"report"</span>, <span class="st">"Rnw"</span><span class="op">)</span>      <span class="co"># creates report.Rnw in the working directory</span>
 <span class="fu"><a href="../reference/use_btabletemplate.html">use_btabletemplate</a></span><span class="op">(</span><span class="st">"code/report"</span>, <span class="st">"Rnw"</span><span class="op">)</span> <span class="co"># creates report.Rnw in the code directory</span></code></pre></div>
 </div>
-<div id="headers-and-footers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#headers-and-footers" class="anchor"></a>Headers and footers</h2>
+<div class="section level2">
+<h2 id="headers-and-footers">Headers and footers<a class="anchor" aria-label="anchor" href="#headers-and-footers"></a>
+</h2>
 <p>Where there are multiple header lines, the <code>nhead</code> argument can be used and any neighboring cells in those first rows will be merged.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span><span class="op">)</span>,
-                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span><span class="op">)</span>,
-                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span><span class="op">)</span>,
-                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span><span class="op">)</span>,
+                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span><span class="op">)</span>,
+                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span><span class="op">)</span>,
+                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"mean (sd)"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">2</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span><span class="op">)</span></code></pre></div>
 
 <p><img src="fig/header.png"><!-- --></p>
@@ -152,24 +148,24 @@ header-includes:
 <p><img src="fig/aggregate.png"><!-- --></p>
 <p>Footers included in the dataframe can also be added:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span>, <span class="st">"*Footer"</span><span class="op">)</span>,
-                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span>, <span class="st">""</span><span class="op">)</span>,
-                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span>, <span class="st">""</span><span class="op">)</span>,
-                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"Row 1"</span>, <span class="st">"Row2"</span>, <span class="st">"*Footer"</span><span class="op">)</span>,
+                 out_t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Total"</span>, <span class="st">"t1"</span>, <span class="st">"t1"</span>, <span class="st">""</span><span class="op">)</span>,
+                 out_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="st">"g11"</span>, <span class="st">"g12"</span>, <span class="st">""</span><span class="op">)</span>,
+                 out_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="st">"g21"</span>, <span class="st">"g22"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead<span class="op">=</span><span class="fl">1</span>, nfoot<span class="op">=</span><span class="fl">1</span>, caption<span class="op">=</span><span class="st">"Table1"</span>, 
        rulelength <span class="op">=</span> <span class="st">"6cm"</span><span class="op">)</span></code></pre></div>
 <p><img src="fig/footer.png"><!-- --></p>
 </div>
-<div id="alignment" class="section level2">
-<h2 class="hasAnchor">
-<a href="#alignment" class="anchor"></a>Alignment</h2>
+<div class="section level2">
+<h2 id="alignment">Alignment<a class="anchor" aria-label="anchor" href="#alignment"></a>
+</h2>
 <p>Alignment can be changed via the <code>aligntot</code> argument. For example, we could specify that the first column be left aligned and all other columns should be centered aligned:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btable.html">btable</a></span><span class="op">(</span><span class="va">df</span>, nhead <span class="op">=</span> <span class="fl">1</span>, nfoot <span class="op">=</span> <span class="fl">0</span>, caption <span class="op">=</span> <span class="st">"Table1"</span>, aligntot <span class="op">=</span> <span class="st">"lccc"</span><span class="op">)</span></code></pre></div>
 <p><img src="fig/align.png"><!-- --></p>
-<div id="custom-column-types" class="section level3">
-<h3 class="hasAnchor">
-<a href="#custom-column-types" class="anchor"></a>Custom column types</h3>
+<div class="section level3">
+<h3 id="custom-column-types">Custom column types<a class="anchor" aria-label="anchor" href="#custom-column-types"></a>
+</h3>
 <p>It’s possible to create new column types in LaTeX and use them in <code>btabler</code>.</p>
 <p>The following creates a new column type if put in the LaTeX or Rmd header</p>
 <pre><code># .tex
@@ -201,11 +197,13 @@ header-includes:
 
 
       <footer><div class="copyright">
-  <p>Developed by Lukas Bütikofer.</p>
+  <p></p>
+<p>Developed by Lukas Bütikofer.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -213,6 +211,8 @@ header-includes:
 
   
 
+
+  
 
   </body>
 </html>
