@@ -42,6 +42,7 @@
 #' @param sfile				sanitizing file for latex, dataframe with two columns, pattern and replacement
 #' @param print				logical, indicates whether table should be printed, TRUE by default
 #' @param comment				logical, indicates whether xtable should print it's comment, FALSE by default
+#' @param include.colnames              logical, indicated whether the columns names are printed, FALSE by default.
 #' @param ...				further arguments passed to print.xtable()
 #'
 #' @return	table in latex format
@@ -107,6 +108,7 @@ btable<-function(dat,
                  sfile="",
                  print=TRUE,
                  comment = FALSE,
+		 include.colnames = FALSE,
                  ...) {
 
 	
@@ -372,7 +374,7 @@ btable<-function(dat,
 	}
 
 	#ptint xtable
-	xtp<-print(xt,include.rownames=FALSE,include.colnames=FALSE,sanitize.text.function=sf,
+	xtp<-print(xt,include.rownames=FALSE,include.colnames=include.colnames,sanitize.text.function=sf,
 		 booktabs = TRUE,hline.after=hlinea,
 		 caption.placement = "top", latex.environments = "center",
 		 table.placement=table.placement,

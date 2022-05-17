@@ -32,6 +32,7 @@ btable(
   sfile = "",
   print = TRUE,
   comment = FALSE,
+  include.colnames = FALSE,
   ...
 )
 }
@@ -91,6 +92,8 @@ default value is "ht".}
 \item{print}{logical, indicates whether table should be printed, TRUE by default}
 
 \item{comment}{logical, indicates whether xtable should print it's comment, FALSE by default}
+
+\item{include.colnames}{logical, indicated whether the columns names are printed, FALSE by default.}
 
 \item{...}{further arguments passed to print.xtable()}
 }
