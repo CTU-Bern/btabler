@@ -41,8 +41,8 @@
 #' @param mergerow			merge indicated row, show only first entry
 #' @param sfile				sanitizing file for latex, dataframe with two columns, pattern and replacement
 #' @param print				logical, indicates whether table should be printed, TRUE by default
-#' @param comment				logical, indicates whether xtable should print it's comment, FALSE by default
-#' @param include.colnames              logical, indicated whether the columns names are printed, FALSE by default.
+#' @param comment			logical, indicates whether xtable should print it's comment, FALSE by default
+#' @param include.colnames	logical, indicated whether the columns names are printed, FALSE by default.
 #' @param ...				further arguments passed to print.xtable()
 #'
 #' @return	table in latex format
