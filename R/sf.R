@@ -109,6 +109,8 @@ sf<-function(str,sfile="") {
   s1<-gsub(pattern="\u00A7",   replacement="{\\\\S}",x=as.character(s1))
   s1<-gsub(pattern="\u00B6",   replacement="{\\\\P}",x=as.character(s1))
   
+  s1<-gsub(pattern="\u0002",   replacement="",x=as.character(s1))
+  
   if (file.exists(sfile)) {
     sftempl<-read.csv(sfile,header=TRUE,encoding="UTF-8",colClasses = "character")
     for (i in 1:nrow(sftempl)) {
