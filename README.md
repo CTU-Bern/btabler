@@ -3,7 +3,7 @@
 
 # btabler <img src='man/figures/sticker.png' align="right" width="200">
 
-[![](https://img.shields.io/badge/dev%20version-0.0.3-blue.svg)](https://github.com/CTU-Bern/btabler)
+[![](https://img.shields.io/badge/dev%20version-0.0.4-blue.svg)](https://github.com/CTU-Bern/btabler)
 [![R-CMD-fullcheck](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml/badge.svg)](https://github.com/CTU-Bern/btabler/actions/workflows/R-CMD-full.yaml)
 
 `btabler` is a package which adds wraps the `xtable` package, adding
@@ -74,7 +74,7 @@ your `.tex` file or `.Rmd`
     \usepackage{booktabs}
     \usepackage{float}
     \usepackage{array}
-    
+
     # .Rmd
     header-includes:
       - \usepackage{longtable}
