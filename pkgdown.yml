@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   btabler: btabler.html
-last_built: 2024-08-16T06:17Z
+last_built: 2024-08-16T06:18Z
 urls:
   reference: https://ctu-bern.github.io/btabler/reference
   article: https://ctu-bern.github.io/btabler/articles
