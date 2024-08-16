@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/btabler.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/btable.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/use_btabletemplate.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ctu-bern.github.io/btabler/404.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/LICENSE-text.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/LICENSE.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/articles/btabler.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/articles/index.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/authors.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/index.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/news/index.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/reference/btable.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/reference/index.html</loc></url>
+<url><loc>https://ctu-bern.github.io/btabler/reference/use_btabletemplate.html</loc></url>
 </urlset>
+
